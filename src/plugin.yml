@@ -1,0 +1,8 @@
+main: dk.muj.derius.perm.DeriusPerm
+name: Derius-Perm
+version: 0.1_dev
+#website: http://muj.dk/Derius/Mining
+authors: [madus, ulumulu1510]
+description: §eDerius perm
+depend: [Derius-Core]
+load: startup
