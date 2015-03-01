@@ -3,6 +3,7 @@ package dk.muj.derius.perm.entity;
 import org.bukkit.Bukkit;
 import org.bukkit.permissions.Permission;
 import org.bukkit.permissions.PermissionDefault;
+import org.bukkit.plugin.PluginManager;
 
 import com.massivecraft.massivecore.store.Entity;
 import com.massivecraft.massivecore.util.PermUtil;
@@ -27,20 +28,33 @@ public class Perm extends Entity<Perm>
 	{
 		if (that == this || that == null) return that;
 		
-		boolean old = this.isDefault();
 		this.setDefault(that.isDefault);
-		if (this.isDefault() != old) this.updateBukkitPermission();
 		
 		return this;
+	}
+	
+	@Override
+	public void preAttach(String id)
+	{
+		this.setId(id);
 	}
 	
 	// -------------------------------------------- //
 	// FIELDS
 	// -------------------------------------------- //
 	
-	private boolean isDefault = true;
+	boolean isDefault = true;
 	public boolean isDefault() { return isDefault; }
-	public void setDefault(boolean def) { this.isDefault = def; this.changed();}
+	public void setDefault(boolean def)
+	{
+		boolean old = this.isDefault();
+		this.isDefault = def;
+		if (this.isDefault() != old)
+		{
+			this.updateBukkitPermission();
+			this.changed();
+		}
+	}
 	public PermissionDefault getPermissionDefault() { return this.isDefault() ? PermissionDefault.TRUE : PermissionDefault.OP; }
 	
 	// -------------------------------------------- //
@@ -49,7 +63,10 @@ public class Perm extends Entity<Perm>
 	
 	public void updateBukkitPermission()
 	{
-		Permission perm = Bukkit.getPluginManager().getPermission(this.getId());
+		PluginManager pm = Bukkit.getPluginManager();
+		 if (pm == null) return; // This might happen on startup
+		
+		Permission perm = pm.getPermission(this.getId());
 		PermUtil.set(perm, this.getPermissionDefault());
 	}
 	
