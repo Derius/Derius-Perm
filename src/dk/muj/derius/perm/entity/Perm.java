@@ -49,7 +49,9 @@ public class Perm extends Entity<Perm>
 	{
 		boolean old = this.isDefault();
 		this.isDefault = def;
-		if (this.isDefault() != old)
+		// If it was updated update bukkit permission.
+		// If not attached this is during Permcoll#init and the bukkit perm has not yet been created
+		if (this.isDefault() != old && this.attached())
 		{
 			this.updateBukkitPermission();
 			this.changed();

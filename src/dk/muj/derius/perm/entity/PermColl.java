@@ -1,6 +1,5 @@
 package dk.muj.derius.perm.entity;
 
-import org.apache.commons.lang.Validate;
 import org.bukkit.permissions.Permission;
 
 import com.massivecraft.massivecore.store.Coll;
@@ -44,22 +43,6 @@ public class PermColl extends Coll<Perm>
 		if (oid instanceof Perm) return ((Perm) oid).getId();
 		
 		return null;
-	}
-	
-	public void copy(Object ofrom, Object oto)
-	{
-		if (ofrom == null) throw new NullPointerException("ofrom");
-		if (oto == null) throw new NullPointerException("oto");
-		
-		Validate.isTrue(ofrom instanceof Perm, "must be perm");
-		Validate.isTrue(oto instanceof Perm, "must be perm");
-		
-		Perm from = (Perm) ofrom;
-		Perm to = (Perm) oto;
-		
-		to.isDefault = from.isDefault; // Must circumvent setters
-		to.setCustomData(from.getCustomData());
-		
 	}
 	
 }

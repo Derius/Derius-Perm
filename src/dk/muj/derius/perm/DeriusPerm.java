@@ -11,18 +11,18 @@ import org.bukkit.permissions.Permission;
 import com.massivecraft.massivecore.MassivePlugin;
 import com.massivecraft.massivecore.util.PermUtil;
 
-import dk.muj.derius.api.Ability;
-import dk.muj.derius.api.DPlayer;
 import dk.muj.derius.api.DeriusAPI;
 import dk.muj.derius.api.Req;
-import dk.muj.derius.api.Skill;
+import dk.muj.derius.api.ability.Ability;
 import dk.muj.derius.api.events.AbilityRegisteredEvent;
 import dk.muj.derius.api.events.SkillRegisteredEvent;
 import dk.muj.derius.api.events.SpecialisationSlotEvent;
 import dk.muj.derius.api.events.StaminaMaxEvent;
+import dk.muj.derius.api.player.DPlayer;
+import dk.muj.derius.api.req.ReqHasPerm;
+import dk.muj.derius.api.skill.Skill;
 import dk.muj.derius.perm.entity.Perm;
 import dk.muj.derius.perm.entity.PermColl;
-import dk.muj.derius.req.ReqHasPerm;
 
 public class DeriusPerm extends MassivePlugin
 {
