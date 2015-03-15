@@ -24,7 +24,7 @@ import dk.muj.derius.api.skill.Skill;
 import dk.muj.derius.perm.entity.Perm;
 import dk.muj.derius.perm.entity.PermColl;
 
-public class DeriusPerm extends MassivePlugin
+public final class DeriusPerm extends MassivePlugin
 {
 	// -------------------------------------------- //
 	// INSTANCE & CONSTRUCT
@@ -32,7 +32,7 @@ public class DeriusPerm extends MassivePlugin
 	
 	private static DeriusPerm i;
 	public static DeriusPerm get() { return i; }
-	public DeriusPerm() { i = this; }
+	private DeriusPerm() { i = this; }
 	
 	// -------------------------------------------- //
 	// OVERRIDE: PLUGIN
