@@ -32,7 +32,7 @@ public final class DeriusPerm extends MassivePlugin
 	
 	private static DeriusPerm i;
 	public static DeriusPerm get() { return i; }
-	private DeriusPerm() { i = this; }
+	public DeriusPerm() { i = this; }
 	
 	// -------------------------------------------- //
 	// OVERRIDE: PLUGIN
